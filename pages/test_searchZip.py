@@ -1,7 +1,7 @@
 from HomePage import *
 from SearchFilterView import *
 
-#Setting up initial browser for testing
+# Setting up initial browser for testing
 service = Service(r"C:\chromedriver\chromedriver.exe")
 browser = webdriver.Chrome(service=service)
 browser.get('http://redfin.com/')
@@ -17,7 +17,7 @@ def test_setup():
         assert True
     else:
         assert False
-    
+
 
 # Search zip and check if URL has changed
 def test_zip():
@@ -25,8 +25,8 @@ def test_zip():
     home.setSearchZipResult('97116')
     if '97116' in home.browser.current_url:
         assert True
-        
-        
+
+
 # Apply filters and check if page has changed number of homes available
 def test_search():
     sleep(30)
@@ -44,12 +44,12 @@ def test_search():
         assert True
     else:
         assert False
-       
-       
-# Close session gracefully   
+
+
+# Close session gracefully
 def test_teardown():
     sleep(3)
     browser.close()
     sleep(3)
-    if browser == None:
+    if browser is None:
         assert True

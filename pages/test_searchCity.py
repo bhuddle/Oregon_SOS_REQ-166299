@@ -1,7 +1,7 @@
 from HomePage import *
 from SearchFilterView import *
 
-#set up browser for testing
+# Set up browser for testing
 service = Service(r"C:\chromedriver\chromedriver.exe")
 browser = webdriver.Chrome(service=service)
 browser.get('http://redfin.com/')
@@ -9,7 +9,7 @@ browser.set_page_load_timeout(60)
 home = HomePage(browser)
 
 
-# navigate to home page complete
+# Navigate to home page complete
 def test_setup():
     state = home.browser.execute_script('return document.readyState')
     print(state)
@@ -17,15 +17,15 @@ def test_setup():
         assert True
     else:
         assert False
-    
-    
+
+
 # Search for city and verify in URL change
 def test_city():
     sleep(3)
     home.setSearchCityResult('Forest Grove OR')
     if 'Forest Grove' in home.browser.current_url:
         assert True
-        
+
 
 # Search based on input 'Hillsboro OR'
 def test_search():
@@ -44,12 +44,12 @@ def test_search():
         assert True
     else:
         assert False
-        
-        
-#Close session gracefully    
+
+
+# Close session gracefully
 def test_teardown():
     sleep(3)
     browser.close()
     sleep(3)
-    if browser == None:
+    if browser is None:
         assert True
