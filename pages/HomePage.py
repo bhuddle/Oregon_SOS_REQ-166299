@@ -1,7 +1,6 @@
 from Locators import Locator
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from time import sleep
 
 
 # Home page of redfin
@@ -13,11 +12,12 @@ class HomePage(object):
         self.browser = driver
 
         # Setting locators
-        self.login = driver.find_element("xpath", Locator.login)
-        self.sign_up = driver.find_element("xpath", Locator.sign_up)
-        self.search_button = driver.find_element("xpath",
-                                                 Locator.search_button)
-        self.search_bar = driver.find_element("xpath", Locator.search_bar)
+        self.login = self.browser.find_element("xpath", Locator.login)
+        self.sign_up = self.browser.find_element("xpath", Locator.sign_up)
+        self.search_button = self.browser.find_element("xpath",
+                                                       Locator.search_button)
+        self.search_bar = self.browser.find_element("xpath",
+                                                    Locator.search_bar)
 
     # Returns the login element
     def getLogin(self):
