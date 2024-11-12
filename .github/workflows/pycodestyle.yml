@@ -1,4 +1,4 @@
-name: Pycodestle
+name: Pycodestyle
 
 on: [push]
 
